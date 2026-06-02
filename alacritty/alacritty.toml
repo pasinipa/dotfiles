@@ -1,0 +1,16 @@
+
+[general]
+
+[window]
+# position = { x = 620, y = 110}
+# dimensions = { columns = 95, lines = 45}
+padding = { x = 6, y = 0 }
+dynamic_padding = true
+decorations = "Buttonless"
+decorations_theme_variant = "Dark"
+opacity = 0.85
+blur = true
+
+[font]
+normal = { family = "Hasklug Nerd Font", style = "Medium"}
+size = 11
