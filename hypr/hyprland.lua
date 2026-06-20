@@ -85,19 +85,19 @@ hl.env("HYPRCURSOR_SIZE", "24")
 -- Refer to https://wiki.hypr.land/Configuring/Basics/Variables/
 hl.config({
     general = {
-        gaps_in  = 3,
-        gaps_out = 13,
+        gaps_in  = 2,
+        gaps_out = 10,
 
-        border_size = 1,
+        border_size = 0,
 	 -- no_border_on_floating = true,
 
         col = {
-            active_border   = { colors = {"rgba(FF4A4DEE)", "rgba(FFDF71EE)"}, angle = 45 },
+            active_border   = { colors = {"rgba(FF4A4DEE)", "rgba(FF4A4DEE)"}, angle = 45 },
             inactive_border = "rgba(595959aa)",
         },
 
         resize_on_border = true,
-	hover_icon_on_border = false,
+	hover_icon_on_border = true,
 
         allow_tearing = false,
 
@@ -110,8 +110,8 @@ hl.config({
         rounding_power = 1,
 
         -- Change transparency of focused and unfocused windows
-        active_opacity   = 1.0,
-        inactive_opacity = 0.85,
+        active_opacity   = 1,
+        inactive_opacity = 0.7,
 
         shadow = {
             enabled      = true,
@@ -122,9 +122,9 @@ hl.config({
 
         blur = {
             enabled   = true,
-            size      = 5,
-            passes    = 3,
-            vibrancy  = 0.1696,
+            size      = 3,
+            passes    = 6,
+            vibrancy  = 1, -- on god non so cosa fa questo
         },
     },
 

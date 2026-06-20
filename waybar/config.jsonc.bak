@@ -1,0 +1,48 @@
+// -*- mode: jsonc -*-
+{
+    "position": "top", // Waybar position (top|bottom|left|right)
+    "layer": "bottom", // Waybar at top layer
+    "margin-top": 8,
+    "margin-bottom": 0,
+    "margin-left": 8,
+    "margin-right": 8,
+    "spacing": 0,
+    // "height": 25, // Waybar height (to be removed for auto height)
+    // "width": 1400, // Waybar width
+    // "spacing": 4, // Gaps between modules
+    // "exclusive": true, // request an exclusive zone from the compositor
+    // "fixed-center": true,
+    // "reload_style_on_change": true,
+
+    // Load Modules
+    "include": [ "~/.config/waybar/modules.jsonc"],
+    "modules-left": [
+	//"custom/appmenu",
+        "clock"
+        //"wlr/taskbar",
+        //"group/quicklinks",
+        //"custom/nowplaying",        
+        //"custom/empty"
+	//"hyprland/submap",
+	//"hyprland/window",
+    ],
+    "modules-center": [
+        "hyprland/workspaces"
+        //"custom/empty"
+    ],
+    "modules-right": [
+	//"custom/updates",
+        "pulseaudio",
+        "backlight",
+        "bluetooth",
+        "network",
+        "battery",
+        "power-profiles-daemon",
+        //"group/hardware",
+        //"group/tools",
+        "tray"
+        //"custom/notification",
+        //"custom/exit",
+        //"custom/ml4w-welcome",
+    ]
+}
