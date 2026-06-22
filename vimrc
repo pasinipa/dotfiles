@@ -69,13 +69,6 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
-" Enables color themes "
-"if !has('gui_running')
-" set t_Co=256
-"endif
-" Enable true colors support "
-set termguicolors
-
 " Automatically delete any trailing whitespace on buffer save "
 autocmd BufWritePre * %s/\s\+$//e
 
@@ -140,14 +133,5 @@ set statusline+=\ %p%%
 set statusline+=\ %l:%c
 set statusline+=\
 
-
-call plug#begin()
-
-Plug 'morhetz/gruvbox'
-
-call plug#end()
-
 " Set colorscheme "
-
-autocmd vimenter * ++nested colorscheme gruvbox
 set background=dark
