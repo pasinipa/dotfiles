@@ -11,6 +11,10 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+# Makes Ctrl-P and Ctrl-N work as in Emacs mode
+bindkey '^P' up-line-or-history
+bindkey '^N' down-line-or-history
+
 # Allows for case insensitive auto-completions
 zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Za-z}'
 fastfetch
@@ -27,6 +31,11 @@ alias remove="/bin/rm -irv"
 
 if [[ "$TERM" = "linux" ]] then
 	setterm --blank 5 --powerdown 1
+
+	# COMMAND PROMPT
+	PS0='\n'
+	PS1='%n %F{blue}%B%~%b%f %F{%(?.green.red)}>%f '
+	PS2=' %F{yellow}>%f '
 else
 	eval "$(starship init zsh)"
 fi
