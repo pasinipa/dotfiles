@@ -47,7 +47,7 @@ local emailClient = "thunderbird"
 hl.on("hyprland.start", function ()
   hl.exec_cmd("hyprpaper")
   hl.exec_cmd("hyprsunset")
-  hl.exec_cmd("waybar")
+  -- hl.exec_cmd("waybar")
   -- hl.exec_cmd("alacritty", {float = true, center = true, size = {940, 800}})
   hl.exec_cmd("systemctl --user start hyprpolkitagent.service")
 end)
