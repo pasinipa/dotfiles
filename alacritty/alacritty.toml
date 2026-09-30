@@ -12,5 +12,5 @@ decorations_theme_variant = "Dark"
 # blur = true
 
 [font]
-normal = { family = "Hasklug Nerd Font", style = "Medium"}
+normal = { family = "MesloLGSDZ Nerd Font Mono, Regular", style = "Medium"}
 size = 11

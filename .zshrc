@@ -17,7 +17,6 @@ bindkey '^N' down-line-or-history
 
 # Allows for case insensitive auto-completions
 zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Za-z}'
-fastfetch
 
 # ALIASES
 alias ls='ls --color=auto'
@@ -29,8 +28,14 @@ alias mv="mv -i"
 alias rm='echo "rm is disabled, use remove or trash or /bin/rm instead."'
 alias remove="/bin/rm -irv"
 
+alias hl="nvim ~/.config/hypr/hyprland.lua"
+alias nmtui="nmtui connect"
+alias update="sudo pacman -Syyu"
+
+
 if [[ "$TERM" = "linux" ]] then
 	setterm --blank 5 --powerdown 1
+        fastfetch
 
 	# COMMAND PROMPT
 	PS0='\n'

@@ -29,8 +29,10 @@ hl.monitor({
 
 -- Set programs that you use
 local terminal    = "alacritty"
-local fileManager = "dolphin"
+local fileManager = "kitty ranger"
 local menu        = "rofi -show drun"
+local browser     = "librewolf"
+local emailClient = "thunderbird"
 
 
 -------------------
@@ -42,10 +44,12 @@ local menu        = "rofi -show drun"
 -- Autostart necessary processes (like notifications daemons, status bars, etc.)
 -- Or execute your favorite apps at launch like this:
 --
-hl.on("hyprland.start", function () 
+hl.on("hyprland.start", function ()
   hl.exec_cmd("hyprpaper")
   hl.exec_cmd("hyprsunset")
-  hl.exec_cmd("waybar")
+  -- hl.exec_cmd("waybar")
+  -- hl.exec_cmd("alacritty", {float = true, center = true, size = {940, 800}})
+  hl.exec_cmd("systemctl --user start hyprpolkitagent.service")
 end)
 
 
@@ -86,21 +90,16 @@ hl.env("HYPRCURSOR_SIZE", "24")
 hl.config({
     general = {
         gaps_in  = 2,
-        gaps_out = 10,
-
+        gaps_out = 5,
         border_size = 0,
 	 -- no_border_on_floating = true,
-
         col = {
             active_border   = { colors = {"rgba(FF4A4DEE)", "rgba(FF4A4DEE)"}, angle = 45 },
             inactive_border = "rgba(595959aa)",
         },
-
         resize_on_border = true,
 	hover_icon_on_border = true,
-
         allow_tearing = false,
-
         layout = "master",
 
     },
@@ -110,8 +109,8 @@ hl.config({
         rounding_power = 1,
 
         -- Change transparency of focused and unfocused windows
-        active_opacity   = 1,
-        inactive_opacity = 0.7,
+        active_opacity   = 0.9,
+        inactive_opacity = 0.8,
 
         shadow = {
             enabled      = true,
@@ -122,9 +121,9 @@ hl.config({
 
         blur = {
             enabled   = true,
-            size      = 3,
-            passes    = 6,
-            vibrancy  = 1, -- on god non so cosa fa questo
+            size      = 5,
+            passes    = 4,
+            vibrancy  = 0.8, -- ha a che fare con i colori
         },
     },
 
@@ -238,9 +237,9 @@ hl.config({
         sensitivity = 0, -- -1.0 - 1.0, 0 means no modification.
 
         touchpad = {
-	    disable_while_typing = true,
+	    disable_while_typing = false,
 	    clickfinger_behavior = true,
-	    tap_to_click = false,	
+	    tap_to_click = false,
 	    scroll_factor = 0.4,
             natural_scroll = true,
         },
@@ -272,15 +271,21 @@ hl.device({
 local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
-hl.bind(mainMod .. " + N", hl.dsp.exec_cmd(terminal))
+hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd("alacritty", {float = true, move = {"(monitor_w - 800)/2", "200"} , size = {800, 450}}))
 local closeWindowBind = hl.bind(mainMod .. " + Q", hl.dsp.window.close())
+
 -- closeWindowBind:set_enabled(false)
 hl.bind(mainMod .. " + SHIFT + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
 hl.bind(mainMod .. " + O", hl.dsp.exec_cmd(fileManager))
+hl.bind(mainMod .. " + W", hl.dsp.exec_cmd(browser))
+hl.bind(mainMod .. " + M", hl.dsp.exec_cmd(emailClient))
+hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("alacritty -e bluetui", {float = true, move = {"(monitor_w - 800)/2", "200"} , size = {800, 450}}))
+hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("alacritty -e nmtui-connect", {float = true, move = {"(monitor_w - 800)/2", "200"} , size = {800, 450}}))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(menu))
-hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
+hl.bind(mainMod .. " + SHIFT + P", hl.dsp.exec_cmd("~/shell-scripts/change-wallpaper.sh"))
 hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd("~/.config/waybar/launch.sh"))
+hl.bind(mainMod .. " + F12", hl.dsp.exec_cmd("shutdown now"))
 -- hl.bind(mainMod .. " + B", hl.dsp.layout("togglesplit"))    -- dwindle only
 
 -- Move focus with mainMod + arrow keys
@@ -372,4 +377,11 @@ hl.window_rule({
 
     move  = "20 monitor_h-120",
     float = true,
+
 })
+
+-- disable blur for firefox
+hl.window_rule({ match = { class = "librewolf" }, opacity = "1 override 0.8 override" })
+
+hl.window_rule({ match = { class = "Alacritty" }, opacity = "0.8 override 0.6 override" })
+
