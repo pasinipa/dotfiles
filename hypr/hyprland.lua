@@ -33,6 +33,7 @@ local fileManager = "kitty ranger"
 local menu        = "rofi -show drun"
 local browser     = "librewolf"
 local emailClient = "thunderbird"
+local processManager = "htop"
 
 
 -------------------
@@ -279,6 +280,7 @@ hl.bind(mainMod .. " + SHIFT + M", hl.dsp.exec_cmd("command -v hyprshutdown >/de
 hl.bind(mainMod .. " + O", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + W", hl.dsp.exec_cmd(browser))
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd(emailClient))
+hl.bind(mainMod .. " + H", hl.dsp.exec_cmd(processManager))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("alacritty -e bluetui", {float = true, move = {"(monitor_w - 800)/2", "200"} , size = {800, 450}}))
 hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("alacritty -e nmtui-connect", {float = true, move = {"(monitor_w - 800)/2", "200"} , size = {800, 450}}))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))

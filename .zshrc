@@ -28,7 +28,7 @@ alias mv="mv -i"
 alias rm='echo "rm is disabled, use remove or trash or /bin/rm instead."'
 alias remove="/bin/rm -irv"
 
-alias hl="nvim ~/.config/hypr/hyprland.lua && cd ~/Modelli/dotfiles && git fetch && git add . && git commit && git push && cd -"
+alias hl="nvim ~/.config/hypr/hyprland.lua && cd ~/Modelli/dotfiles && git fetch && git add . && git commit && git push; cd -"
 alias nmtui="nmtui connect"
 alias update="sudo pacman -Syyu"
 
